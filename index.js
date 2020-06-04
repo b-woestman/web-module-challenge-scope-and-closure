@@ -28,10 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *    counter1 defines the count vairable within the function and therefore cannot be accessed anywhere else. It also calls another function inside itself.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ *    Both functions use the return which brings a value out of the function and 'closes' it. 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ *    counter1 would be preferred if you wanted the count to equal zero everytime you call the function.
 */
 
 // counter1 code
@@ -56,11 +61,13 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(min, max){
 
-    /*Code Here*/
+    // console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 
 }
+inning(0,2);
 
 /* Task 3: finalScore()
 
@@ -75,12 +82,23 @@ finalScore(inning, 9) might return:
 }
 
 */ 
+const scoreobject = {
+    Home: 0,
+    Away: 0,
+}
 
-function finalScore(/*code Here*/){
+function finalScore(scorefunction, numberofinnings ){
 
-  /*Code Here*/
+  for (i = 0 ; i < numberofinnings ; i++){
+    scoreobject.Home = scoreobject.Home + inning(0,2);
+    scoreobject.Away = scoreobject.Away + inning(0,2);
+  }
+
+  console.log(scoreobject);
+  return scoreobject;
 
 }
+finalScore(inning, 9);
 
 /* Task 4: 
 
@@ -103,8 +121,35 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+function scoreboard(scorefunction, numberofinnings) {
+
+  let homescore = 0;
+  let awayscore = 0;
+
+  for (i = 0 ; i < numberofinnings ; i++){
+    let homeinningscore = inning(0,2);
+    let awayinningscore = inning(0,2);
+
+    homescore = homescore + homeinningscore;
+    awayscore = awayscore + awayinningscore;
+
+    if (i === 0 ){ console.log(`1st inning: ${homescore} - ${awayscore}`)};
+    if (i === 1 ){ console.log(`2nd inning: ${homescore} - ${awayscore}`)};
+    if (i === 2 ){ console.log(`3rd inning: ${homescore} - ${awayscore}`)};
+    if (i === 3 ){ console.log(`4th inning: ${homescore} - ${awayscore}`)};
+    if (i === 4 ){ console.log(`5th inning: ${homescore} - ${awayscore}`)};
+    if (i === 5 ){ console.log(`6th inning: ${homescore} - ${awayscore}`)};
+    if (i === 6 ){ console.log(`7th inning: ${homescore} - ${awayscore}`)};
+    if (i === 7 ){ console.log(`8th inning: ${homescore} - ${awayscore}`)};
+    if (i === 8 ){ 
+      console.log(`9th inning: ${homescore} - ${awayscore}`);
+      console.log(`Final Score: ${homescore} - ${awayscore}`);
+    }
+  
+  };
+
 }
+scoreboard(inning , 9);
 
 

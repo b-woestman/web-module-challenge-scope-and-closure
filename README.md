@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+  Closure is when a function has access to all the variables it is using.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,13 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+    Closure is used in the personal dice function when we pass name into it and the nest function has access to it.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+    The name that is passed through will always be the same but the random number generator could be different. 
+
 c. What is the lexical scope of `newRoll`? 
+    name
 
 ### Task 3 - Stretch Goals
 
